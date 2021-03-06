@@ -182,7 +182,7 @@ print(dict_comprehension)
 
 # 14. Convert (3) to dict comprehension.
 
-dict_comp1 = {num: num ** 2 for num in range(1, 10) if num % 2 == 1}
+dict_comp1 = {num: num ** 2 for num in range(1, 11) if num % 2 == 1}
 print(dict_comp1)
 
 # output:
