@@ -40,11 +40,10 @@ class PlantsStates:
 
 
 class Vegetables(ABC):
-    def __init__(self, states, vegetable_type, name, quantity):
+    def __init__(self, states, vegetable_type, name):
         self.states = states
         self.vegetable_type = vegetable_type
         self.name = name
-        self.quantity = quantity
 
     @property
     def vegetable_type(self):
@@ -69,11 +68,10 @@ class Vegetables(ABC):
 
 
 class Fruit(ABC):
-    def __init__(self, states, fruits_type, name, quantity):
+    def __init__(self, states, fruits_type, name):
         self.states = states
         self.fruits_type = fruits_type
         self.name = name
-        self.quantity = quantity
 
     @property
     def fruits_type(self):
@@ -155,7 +153,7 @@ class Tomato(Vegetables):
 
 class TomatoBush:
     def __init__(self, num):
-        self.tomatoes = [Tomato(index, 'Red Tomato', states, 'Cherry') for index in range(0, num-1)]
+        self.tomatoes = [Tomato(index, 'Red Tomato', states, 'Cherry') for index in range(0, num - 1)]
 
     def grow_all(self):
         for tomato in self.tomatoes:
@@ -164,9 +162,13 @@ class TomatoBush:
     def all_are_ripe(self):
         return all([tomato.is_ripe() for tomato in self.tomatoes])
 
+    def provide_harvest(self):
+        self.tomatoes = []
+
+
 class Apple(Fruit):
-    def __init__(self, index, fruits_type, states, name, quantity):
-        super(Apple, self).__init__(states, fruits_type, name, quantity)
+    def __init__(self, index, fruits_type, states, name):
+        super(Apple, self).__init__(states, fruits_type, name)
         self.index = index
         self.fruits_type = fruits_type
         self.state = 0
@@ -188,6 +190,21 @@ class Apple(Fruit):
         print(f'{self.fruits_type} {self.index} is {self.state}')
 
 
+class AppleTree:
+    def __init__(self, num):
+        self.apples = [Apple(index, 'Golden', states, 'King') for index in range(0, num - 1)]
+
+    def grow_all(self):
+        for apple in self.apples:
+            apple.grow()
+
+    def all_are_ripe(self):
+        return all([apple.is_ripe() for apple in self.apples])
+
+    def provide_harvest(self):
+        self.apples = []
+
+
 class StarGardener(Gardener):
     def __init__(self, name, plants):
         super(StarGardener, self).__init__(name, plants)
@@ -197,6 +214,24 @@ class StarGardener(Gardener):
     def harvest(self):
         print('Gardener is harvesting...')
         for plant in self.plants:
-            pass
+            if plant.all_are_ripe():
+                plant.provide_harvest()
+                print('Harvesting is finished.')
+            else:
+                print('Too early! Your plants are not ripe.')
 
+    def handling(self):
+        print('Gardener is working...')
+        for plant in self.plants:
+            plant.grow_all()
+        print('Gardener is finished.')
 
+    def poison_pests(self):
+        pass
+
+    def check_states(self):
+        for all_plants in self.plants:
+            for plant in all_plants:
+                if plant.state == 3:
+                    return True
+                return False
