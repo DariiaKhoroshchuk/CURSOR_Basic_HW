@@ -49,23 +49,13 @@ class Calc:
     Make class with one method "add_nums" with 3 parameters, which returns sum of these parameters.
     Note: this method should not take instance as first parameter.
     """
-    total_calc = 0
-
-    def __init__(self, num):
-        self.num = num
-        Calc.total_calc = Calc.total_calc + num
-
-    @classmethod
-    def add_nums(cls):
-        print(f'Total sum: {cls.total_calc}')
+    @staticmethod
+    def add_nums(num1, num2, num3):
+        Calc.total_calc = num1 + num2 + num3
+        print(f'Total sum: {Calc.total_calc}')
 
 
-num_1 = Calc(5)
-num_2 = Calc(3)
-num_3 = Calc(8)
-
-Calc.add_nums()
-
+Calc.add_nums(5, 4, 7)
 
 # output:
 # Total sum: 16
@@ -123,7 +113,7 @@ class Concert:
     max_visitors_num = 0
 
     def __init__(self, visitors_count=0):
-        self._visitors_count = visitors_count
+        self.visitors_count = visitors_count
 
     @property
     def visitors_count(self):
