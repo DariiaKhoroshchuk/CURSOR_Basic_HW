@@ -1,5 +1,6 @@
 import pickle
-# import openpyxl
+import openpyxl
+
 # 1
 with open('task1.txt', 'r') as file:
     dict_sub = {}
@@ -45,4 +46,27 @@ print(f'The arithmetic mean of the file numbers is equal to {arithmetic_mean}.')
 # The arithmetic mean of the file numbers is equal to 187.52631578947367.
 
 
+# 3
+class OpenExcelFile:
+    def __init__(self, file_name):
+        self.file_obj = openpyxl.load_workbook(file_name)
 
+    def __enter__(self):
+        return self.file_obj
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.file_obj.close()
+
+
+with OpenExcelFile('task3.xlsx') as file:
+    sheet = file.active
+    sheet["A1"] = "Hello"
+    sheet["B1"] = "world!"
+    file.save('task3.xlsx')
+
+print(sheet["A1"].value)
+print(sheet["B1"].value)
+
+# output:
+# Hello
+# world!
