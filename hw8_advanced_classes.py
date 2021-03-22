@@ -45,14 +45,17 @@ class Animal(ABC):
 
 
 class Predator(Animal):
-    def __init__(self, power: int, speed: int):
-        super().__init__(power, speed)
-        self.id = None
-        self.max_power = power
-        self.current_power = power
-        self.speed = speed
+    # def __init__(self, power: int, speed: int):
+    #     super().__init__(power, speed)
+    #     self.id = None
+    #     self.max_power = power
+    #     self.current_power = power
+    #     self.speed = speed
 
     def eat(self, forest: Forest):
+        if self.current_power == 0:
+            forest.remove_animal(self)
+            return
         prey = random.choice(list(forest.animals.values()))
         print(f'Predator {animal.id} is hunting...')
         print(f'The prey is {animal.__class__.__name__} and id is {prey.id}')
@@ -73,25 +76,29 @@ class Predator(Animal):
                 if prey.current_power <= 0:
                     forest.remove_animal(prey.id)
                 if self.current_power <= 0:
-                    forest.remove_animal(animal.id)
+                    forest.remove_animal(self)
                     print('The predator run out of strength and it died...')
 
 
 class Herbivorous(Animal):
-    def __init__(self, power: int, speed: int):
-        super().__init__(power, speed)
-        self.id = None
-        self.max_power = power
-        self.current_power = power
-        self.speed = speed
+    # def __init__(self, power: int, speed: int):
+    #     super().__init__(power, speed)
+    #     self.id = None
+    #     self.max_power = power
+    #     self.current_power = power
+    #     self.speed = speed
 
     def eat(self, forest: Forest):
-        print('Herbivorous is eating...')
-        herb_current_power = self.current_power
-        self.current_power = min(self.current_power + self.max_power * 0.5, self.max_power)
-        print(f'Herbivorous {animal.id} has already eaten. Its restores '
-              f'{self.current_power - herb_current_power} strength. '
-              f'And its power is {self.current_power}.')
+        if self.current_power <= 0:
+            forest.remove_animal(self)
+            return
+        if self.current_power > 0:
+            print('Herbivorous is eating...')
+            herb_current_power = self.current_power
+            self.current_power = min(self.current_power + self.max_power * 0.5, self.max_power)
+            print(f'Herbivorous {animal.id} has already eaten. Its restores '
+                  f'{self.current_power - herb_current_power} strength. '
+                  f'And its power is {self.current_power}.')
 
 
 AnyAnimal: Any[Herbivorous, Predator]
@@ -101,6 +108,7 @@ class Forest:
 
     def __init__(self):
         self.animals: Dict[str, AnyAnimal] = dict()
+        self.number = 0
 
     def add_animal(self, animal: AnyAnimal):
         print(f'Adding a new animal {animal.__class__.__name__} to the forest.'
@@ -113,6 +121,13 @@ class Forest:
 
     def any_predator_left(self):
         return not all(isinstance(animal, Herbivorous) for animal in self.animals.values())
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        self.number += 1
+        return self.number
 
 
 def animal_generator():
