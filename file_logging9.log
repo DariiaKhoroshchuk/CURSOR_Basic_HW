@@ -1,0 +1,38 @@
+2021-03-23 15:28:54,291 - root - INFO - Start calculator...
+2021-03-23 15:29:01,813 - root - INFO - Action was entered.
+2021-03-23 15:29:03,194 - root - INFO - Entered first number 1.0
+2021-03-23 15:29:03,900 - root - INFO - Entered second number 1.0
+2021-03-23 15:29:03,901 - root - INFO - Called adding_num function with numbers: 1.0, 1.0.
+2021-03-23 15:29:03,901 - root - INFO - Result found!
+2021-03-23 15:29:16,921 - root - INFO - Action was entered.
+2021-03-23 15:29:34,639 - root - INFO - Entered first number 7.0
+2021-03-23 15:29:37,838 - root - INFO - Entered second number 2.0
+2021-03-23 15:29:37,839 - root - INFO - Called percentage_of_num function with numbers: 7.0, 2.0.
+2021-03-23 15:29:37,839 - root - INFO - Result found!
+2021-03-23 15:29:45,906 - root - INFO - Action was entered.
+2021-03-23 15:29:50,665 - root - INFO - Entered first number -3.0
+2021-03-23 15:29:55,859 - root - INFO - Entered second number 3.0
+2021-03-23 15:29:55,859 - root - INFO - Called percentage_of_num function with numbers: -3.0, 3.0.
+2021-03-23 15:29:55,859 - root - INFO - Result found!
+2021-03-23 15:30:44,142 - root - INFO - Start calculator...
+2021-03-23 15:30:51,627 - root - INFO - Action was entered.
+2021-03-23 15:30:57,149 - root - INFO - Entered first number -30.0
+2021-03-23 15:30:58,768 - root - INFO - Entered second number 300.0
+2021-03-23 15:30:58,768 - root - INFO - Called percentage_of_num function with numbers: -30.0, 300.0.
+2021-03-23 15:30:58,768 - root - INFO - Result found!
+2021-03-23 15:35:36,795 - root - INFO - Start calculator...
+2021-03-23 15:42:11,137 - root - INFO - Start calculator...
+2021-03-23 15:42:15,393 - root - INFO - Action was entered.
+2021-03-23 15:42:45,631 - root - INFO - Start calculator...
+2021-03-23 15:42:48,486 - root - INFO - Action was entered.
+2021-03-23 15:43:04,954 - root - INFO - Start calculator...
+2021-03-23 15:43:07,759 - root - INFO - Action was entered.
+2021-03-23 15:44:21,480 - root - INFO - Start calculator...
+2021-03-23 15:44:24,758 - root - INFO - Action was entered.
+2021-03-23 15:44:52,959 - root - INFO - Start calculator...
+2021-03-23 15:44:56,199 - root - INFO - Action was entered.
+2021-03-23 15:44:57,472 - root - INFO - Entered first number 1.0
+2021-03-23 15:44:58,055 - root - INFO - Entered second number 1.0
+2021-03-23 15:44:58,055 - root - INFO - Called adding_num function with numbers: 1.0, 1.0.
+2021-03-23 15:44:58,055 - root - INFO - Action checked. Its addition (+)
+2021-03-23 15:44:58,055 - root - INFO - Result found!
