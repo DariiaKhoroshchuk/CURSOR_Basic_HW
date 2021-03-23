@@ -1,5 +1,6 @@
 # 1
 import logging
+import time
 
 temp_format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 try:
@@ -124,4 +125,91 @@ while True:
 # 2
 
 
+class LowWater(Exception):
+    pass
+
+
+class NotEnoughCharge(Exception):
+    pass
+
+
+class OverflowingGarbageCan(Exception):
+    pass
+
+
+class WaterIsOver(Exception):
+    pass
+
+
+class ChargeIsOver(Exception):
+    pass
+
+
+class CleanGarbageCan(Exception):
+    pass
+
+
+class VacuumCleaner:
+    used_charge = 5
+    used_water = 10
+    used_occupancy = 3
+
+    def __init__(self, charge, occupancy, water):
+        self.charge = charge
+        self.occupancy = occupancy
+        self.water = water
+
+    def wash(self):
+        if self.water <= self.used_water:
+            self.water = 0
+        else:
+            self.water -= self.used_water
+        if 10 < self.water < 20:
+            self.water -= self.used_water
+            raise LowWater
+        if self.water == 0:
+            raise WaterIsOver
+        print(f'Washing... There is {self.water}% of water.')
+
+    def vac_cleaner(self):
+        if self.occupancy >= 100 - self.used_occupancy:
+            self.occupancy = 100
+        else:
+            self.occupancy -= self.used_occupancy
+        if 80 < self.occupancy < 90:
+            self.occupancy -= self.used_occupancy
+            raise OverflowingGarbageCan
+        if self.occupancy == 100:
+            raise CleanGarbageCan
+        print(f'Cleaning... Used {self.occupancy}% of garbage can.')
+
+    def move(self):
+        while True:
+            try:
+                if self.charge <= self.used_charge:
+                    self.charge = 0
+                else:
+                    self.charge -= self.used_charge
+                if 10 < self.charge < 20:
+                    self.water -= self.used_water
+                    raise NotEnoughCharge
+                if self.charge == 0:
+                    raise ChargeIsOver
+                print(f'Cleaning... There is {self.charge}% of charge.')
+            except NotEnoughCharge:
+                print('NotEnoughCharge')
+                print('Please, charge me... The charge expires. It may not be enough for the next flight.')
+            except ChargeIsOver:
+                print('ChargeIsOver')
+                print('I am dying...')
+
+            try:
+                self.wash()
+            except LowWater:
+                print('LowWater')
+                print('Please, charge me... The charge expires. It may not be enough for the next flight.')
+            except ChargeIsOver:
+                print('ChargeIsOver')
+                print('I am dying...')
+            time.sleep(1)
 
