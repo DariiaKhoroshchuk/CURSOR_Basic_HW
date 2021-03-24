@@ -36,3 +36,10 @@
 2021-03-23 15:44:58,055 - root - INFO - Called adding_num function with numbers: 1.0, 1.0.
 2021-03-23 15:44:58,055 - root - INFO - Action checked. Its addition (+)
 2021-03-23 15:44:58,055 - root - INFO - Result found!
+2021-03-24 14:46:54,609 - root - INFO - Start calculator...
+2021-03-24 14:46:56,819 - root - INFO - Action was entered.
+2021-03-24 14:46:57,437 - root - INFO - Entered first number 1.0
+2021-03-24 14:46:58,090 - root - INFO - Entered second number 1.0
+2021-03-24 14:46:58,090 - root - INFO - Called adding_num function with numbers: 1.0, 1.0.
+2021-03-24 14:46:58,090 - root - INFO - Action checked. Its addition (+)
+2021-03-24 14:46:58,090 - root - INFO - Result found!
