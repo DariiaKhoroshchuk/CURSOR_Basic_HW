@@ -56,8 +56,12 @@ try:
 
 
         def root_of_num(num_1, num_2):
-            root = (num_1 ** (1/num_2))
             logging.info(f'Called root_of_num function with numbers: {num_1}, {num_2}.')
+            try:
+                root = (num_1 ** (1/num_2))
+            except ZeroDivisionError:
+                logging.error('ZeroDivisionError', exc_info=True)
+                root = 'ZeroDivisionError'
             return root
 
 
@@ -226,7 +230,7 @@ try:
                     except WaterIsOver:
                         print('>>WaterIsOver<<')
                         print('>>The water is over. Washing stopped...<<')
-                        break
+                        continue
 
                     try:
                         self.vac_cleaner()
@@ -237,7 +241,7 @@ try:
                     except CleanGarbageCan:
                         print('>>CleanGarbageCan<<')
                         print('>>Please, clean garbage can. The garbage can is full.<< \n>>Cleaning stopped...<<')
-                        break
+                        continue
                     time.sleep(1)
 
         print('Test1. Cleaning...')

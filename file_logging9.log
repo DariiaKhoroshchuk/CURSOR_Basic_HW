@@ -43,3 +43,42 @@
 2021-03-24 14:46:58,090 - root - INFO - Called adding_num function with numbers: 1.0, 1.0.
 2021-03-24 14:46:58,090 - root - INFO - Action checked. Its addition (+)
 2021-03-24 14:46:58,090 - root - INFO - Result found!
+2021-03-28 19:52:42,175 - root - INFO - Start calculator...
+2021-03-28 19:52:46,957 - root - INFO - Action was entered.
+2021-03-28 19:52:49,219 - root - INFO - Entered first number 4.0
+2021-03-28 19:52:55,238 - root - INFO - Entered second number -3.0
+2021-03-28 19:52:55,238 - root - INFO - Called raising_to_power function with numbers: 4.0, -3.0.
+2021-03-28 19:52:55,238 - root - INFO - Action checked. Its raise to the power (^)
+2021-03-28 19:52:55,238 - root - INFO - Result found!
+2021-03-28 19:53:45,413 - root - INFO - Action was entered.
+2021-03-28 19:53:48,163 - root - INFO - Entered first number 5.0
+2021-03-28 19:53:49,281 - root - INFO - Entered second number 0.0
+2021-03-28 19:53:49,281 - root - INFO - Called raising_to_power function with numbers: 5.0, 0.0.
+2021-03-28 19:53:49,281 - root - INFO - Action checked. Its raise to the power (^)
+2021-03-28 19:53:49,281 - root - INFO - Result found!
+2021-03-28 19:58:09,469 - root - INFO - Action was entered.
+2021-03-28 19:58:14,774 - root - INFO - Entered first number 6.0
+2021-03-28 19:58:28,922 - root - INFO - Entered second number 0.0
+2021-03-28 20:02:16,407 - root - INFO - Start calculator...
+2021-03-28 20:02:25,236 - root - INFO - Action was entered.
+2021-03-28 20:02:27,038 - root - INFO - Entered first number 4.0
+2021-03-28 20:02:28,698 - root - INFO - Entered second number 0.0
+2021-03-28 20:02:28,698 - root - INFO - Called division_of_num function with numbers: 4.0, 0.0.
+2021-03-28 20:02:28,699 - root - ERROR - ZeroDivisionError
+Traceback (most recent call last):
+  File "/home/dariia/Documents/cursor_git_hw/homeworks/hw9_logging_and_exceptions.py", line 45, in division_of_num
+    division = (num_1 / num_2)
+ZeroDivisionError: float division by zero
+2021-03-28 20:02:28,699 - root - INFO - Action checked. Its division (÷)
+2021-03-28 20:02:28,699 - root - INFO - Result found!
+2021-03-28 20:02:54,660 - root - INFO - Action was entered.
+2021-03-28 20:02:56,280 - root - INFO - Entered first number 3.0
+2021-03-28 20:03:07,778 - root - INFO - Entered second number 0.0
+2021-03-28 20:03:07,778 - root - INFO - Called root_of_num function with numbers: 3.0, 0.0.
+2021-03-28 20:03:07,779 - root - ERROR - ZeroDivisionError
+Traceback (most recent call last):
+  File "/home/dariia/Documents/cursor_git_hw/homeworks/hw9_logging_and_exceptions.py", line 61, in root_of_num
+    root = (num_1 ** (1/num_2))
+ZeroDivisionError: float division by zero
+2021-03-28 20:03:07,779 - root - INFO - Action checked. Its root (√)
+2021-03-28 20:03:07,779 - root - INFO - Result found!
