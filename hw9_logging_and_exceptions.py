@@ -50,8 +50,12 @@ try:
 
 
         def raising_to_power(num_1, num_2):
-            raising = (num_1 ** num_2)
             logging.info(f'Called raising_to_power function with numbers: {num_1}, {num_2}.')
+            try:
+                raising = (num_1 ** num_2)
+            except ZeroDivisionError:
+                logging.error('ZeroDivisionError', exc_info=True)
+                raising = 'ZeroDivisionError'
             return raising
 
 

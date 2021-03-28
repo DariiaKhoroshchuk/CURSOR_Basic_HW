@@ -82,3 +82,22 @@ Traceback (most recent call last):
 ZeroDivisionError: float division by zero
 2021-03-28 20:03:07,779 - root - INFO - Action checked. Its root (√)
 2021-03-28 20:03:07,779 - root - INFO - Result found!
+2021-03-28 20:11:30,739 - root - INFO - Start calculator...
+2021-03-28 20:11:42,306 - root - INFO - Action was entered.
+2021-03-28 20:11:43,840 - root - INFO - Entered first number 5.0
+2021-03-28 20:11:45,901 - root - INFO - Entered second number -7.0
+2021-03-28 20:11:45,901 - root - INFO - Called raising_to_power function with numbers: 5.0, -7.0.
+2021-03-28 20:11:45,901 - root - INFO - Action checked. Its raise to the power (^)
+2021-03-28 20:11:45,901 - root - INFO - Result found!
+2021-03-28 23:04:43,419 - root - INFO - Start calculator...
+2021-03-28 23:04:47,723 - root - INFO - Action was entered.
+2021-03-28 23:04:50,475 - root - INFO - Entered first number 0.0
+2021-03-28 23:04:52,429 - root - INFO - Entered second number -5.0
+2021-03-28 23:04:52,429 - root - INFO - Called raising_to_power function with numbers: 0.0, -5.0.
+2021-03-28 23:04:52,429 - root - ERROR - ZeroDivisionError
+Traceback (most recent call last):
+  File "/home/dariia/Documents/cursor_git_hw/homeworks/hw9_logging_and_exceptions.py", line 55, in raising_to_power
+    raising = (num_1 ** num_2)
+ZeroDivisionError: 0.0 cannot be raised to a negative power
+2021-03-28 23:04:52,430 - root - INFO - Action checked. Its raise to the power (^)
+2021-03-28 23:04:52,430 - root - INFO - Result found!
