@@ -1,8 +1,8 @@
 import dataclasses
 from abc import ABC, abstractmethod
 
-VEGETABLES = []
-FRUITS = []
+VEGETABLES = ["Red Tomato"]
+FRUITS = ["Golden"]
 states = {'nothing ': 0, 'flowering': 1, 'green': 2, 'red': 3, 'rotten': 4}
 
 
@@ -75,7 +75,7 @@ class Fruit(ABC):
 
     @property
     def fruits_type(self):
-        return self._fruits_type()
+        return self._fruits_type
 
     @fruits_type.setter
     def fruits_type(self, fruits_type):
@@ -135,7 +135,7 @@ class Tomato(Vegetables):
         self.state = 0
 
     def grow(self):
-        pass
+        self._change_states()
 
     def is_ripe(self):
         if self.state == 3:
@@ -150,10 +150,14 @@ class Tomato(Vegetables):
     def print_state(self):
         print(f'{self.vegetable_type} {self.index} is {self.state}')
 
+    def __repr__(self):
+        return f'{self.vegetable_type} {self.index} is {self.state}'
+
 
 class TomatoBush:
     def __init__(self, num):
-        self.tomatoes = [Tomato(index, 'Red Tomato', states, 'Cherry') for index in range(0, num - 1)]
+        self.tomatoes = [Tomato(index, 'Red Tomato', states, 'Cherry') for index in range(1, num + 1)]
+        self.state = 0
 
     def grow_all(self):
         for tomato in self.tomatoes:
@@ -174,7 +178,7 @@ class Apple(Fruit):
         self.state = 0
 
     def grow(self):
-        pass
+        self._change_states()
 
     def is_ripe(self):
         if self.state == 3:
@@ -189,10 +193,13 @@ class Apple(Fruit):
     def print_state(self):
         print(f'{self.fruits_type} {self.index} is {self.state}')
 
+    def __repr__(self):
+        return f'{self.fruits_type} {self.index} is {self.state}'
+
 
 class AppleTree:
     def __init__(self, num):
-        self.apples = [Apple(index, 'Golden', states, 'King') for index in range(0, num - 1)]
+        self.apples = [Apple(index, 'Golden', states, 'King') for index in range(1, num + 1)]
 
     def grow_all(self):
         for apple in self.apples:
@@ -227,11 +234,140 @@ class StarGardener(Gardener):
         print('Gardener is finished.')
 
     def poison_pests(self):
-        pass
+        pests.quantity //= 2
+        print('Poisoning pests...\nGarden is clear!')
 
     def check_states(self):
         for all_plants in self.plants:
-            for plant in all_plants:
-                if plant.state == 3:
-                    return True
-                return False
+            if all_plants.state == 3:
+                return True
+            return False
+
+    def __repr__(self):
+        return f'{self.name}'
+
+
+class PestsEating(Pests):
+    def __init__(self, pests_type, quantity):
+        super(PestsEating, self).__init__(pests_type, quantity)
+
+    def eat(self):
+        for pest in range(self.quantity):
+            while len(tomato_bush.tomatoes) != 0:
+                tomato_bush.tomatoes.pop()
+            print("All vegetables were eaten by pests...")
+            break
+        for pest in range(self.quantity):
+            while len(apple_tree.apples) != 0:
+                apple_tree.apples.pop()
+            print("All fruit were eaten by pests...")
+            break
+
+    def __repr__(self):
+        return f'Pests {self.pests_type} is {self.quantity}'
+
+
+if __name__ == '__main__':
+    # Creating list of instances for vegetables and fruits, pests and gardener
+    tomato_bush = TomatoBush(5)
+    apple_tree = AppleTree(8)
+    pests = PestsEating('worm', 10)
+    tom = StarGardener('Tom', [tomato_bush, apple_tree])
+    # tom.poison_pests()
+    # pests.eat()
+    # creating only one garden instance with vegetables and fruits
+    garden = Garden(vegetables=tomato_bush.tomatoes, fruits=apple_tree.apples, pests=pests, gardener=tom)
+    garden.show_the_garden()
+    state = tom.check_states()
+    # if not state:
+    #     tom.handling()
+    for i in range(3):
+        tom.handling()
+    tom.harvest()
+
+# output:
+
+# all ok
+# all ok
+# all ok
+# all ok
+# all ok
+# all ok
+# all ok
+# all ok
+# all ok
+# all ok
+# all ok
+# all ok
+# all ok
+# all ok
+# all ok
+# all ok
+# all ok
+# all ok
+# all ok
+# all ok
+# all ok
+# all ok
+# all ok
+# all ok
+# all ok
+# all ok
+# The garden has such vegetables:
+# [Red Tomato 1 is 0, Red Tomato 2 is 0, Red Tomato 3 is 0, Red Tomato 4 is 0, Red Tomato 5 is 0]
+# Also garden has such fruits:
+# [Golden 1 is 0, Golden 2 is 0, Golden 3 is 0, Golden 4 is 0,
+# Golden 5 is 0, Golden 6 is 0, Golden 7 is 0, Golden 8 is 0]
+# And such pests: Pests worm is 10
+# The maintainer of the garden is Tom
+# Gardener is working...
+# Red Tomato 1 is 1
+# Red Tomato 2 is 1
+# Red Tomato 3 is 1
+# Red Tomato 4 is 1
+# Red Tomato 5 is 1
+# Golden 1 is 1
+# Golden 2 is 1
+# Golden 3 is 1
+# Golden 4 is 1
+# Golden 5 is 1
+# Golden 6 is 1
+# Golden 7 is 1
+# Golden 8 is 1
+# Gardener is finished.
+# Gardener is working...
+# Red Tomato 1 is 2
+# Red Tomato 2 is 2
+# Red Tomato 3 is 2
+# Red Tomato 4 is 2
+# Red Tomato 5 is 2
+# Golden 1 is 2
+# Golden 2 is 2
+# Golden 3 is 2
+# Golden 4 is 2
+# Golden 5 is 2
+# Golden 6 is 2
+# Golden 7 is 2
+# Golden 8 is 2
+# Gardener is finished.
+# Gardener is working...
+# Red Tomato 1 is 3
+# Red Tomato 2 is 3
+# Red Tomato 3 is 3
+# Red Tomato 4 is 3
+# Red Tomato 5 is 3
+# Golden 1 is 3
+# Golden 2 is 3
+# Golden 3 is 3
+# Golden 4 is 3
+# Golden 5 is 3
+# Golden 6 is 3
+# Golden 7 is 3
+# Golden 8 is 3
+# Gardener is finished.
+# Gardener is harvesting...
+# Harvesting is finished.
+# Harvesting is finished.
+#
+# Process finished with exit code 0
+
